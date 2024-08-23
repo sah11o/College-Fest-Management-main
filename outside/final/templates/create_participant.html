@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Participant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://connexxionsmedia.com/assets/images/services_H/Seperate/event_manage1.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow effect */
+            text-align: center;
+            width: 400px; /* Set the width of the form */
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #333; /* Dark text color */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555; /* Medium text color */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px); /* Adjust width to accommodate padding */
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px; /* Larger font size */
+        }
+
+        input[type="submit"] {
+            background-color: #007bff; /* Blue color */
+            color: #fff; /* White text color */
+            padding: 12px 0; /* Increased padding */
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px; /* Larger font size */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <form action="/create_participant" method="post">
+        <h2>Create Participant</h2>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="checkbox" id="is_allocated" name="is_allocated">
+        <label for="is_allocated">Allocate Room</label><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

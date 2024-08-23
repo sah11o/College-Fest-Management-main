@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://connexxionsmedia.com/assets/images/services_H/Seperate/event_manage1.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            height: 100vh; /* Ensures background covers the entire viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        h1 {
+            color: black; /* Set text color to black */
+            margin-top: 20px; /* Move the heading a bit to the top */
+            font-size: 32px; /* Increase font size */
+        }
+        
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .button-container button {
+            background-color: #8A2BE2; /* Purple color */
+            color: #fff;
+            border: none;
+            padding: 15px 30px; /* Increase padding for larger buttons */
+            margin: 10px;
+            border-radius: 8px; /* Increase border radius for rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px; /* Increase font size for buttons */
+        }
+        
+        .button-container button:hover {
+            background-color: #800080; /* Darker shade of purple on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the ADMIN Page</h1>
+    <div class="button-container">
+        <button onclick="window.location.href='/create_participant'">Create Participant</button>
+        <button onclick="window.location.href='/create_student'">Create Student</button>
+        <button onclick="window.location.href='/create_organiser'">Create Organiser</button>
+    </div>
+    <div class="button-container">
+    </div>
+</body>
+</html>

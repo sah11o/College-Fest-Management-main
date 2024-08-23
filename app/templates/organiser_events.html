@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://du-assassins.in/wp-content/uploads/2018/12/Top-10-Colege-Fests-India.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .user-bar {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        #searchForm {
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 5px;
+            width: 60%;
+        }
+
+        button[type="submit"] {
+            padding: 8px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-bar">
+            {% if user %}
+                <p>You are logged in as Organiser: {{ user.name }} ({{ user.email }})</p>
+                <p>Your contact number is {{ user.contact }}</p>
+            {% endif %}
+        </div>
+        <h1>Events</h1>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search by event name...">
+            <button type="submit">Search</button>
+        </form>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+                <th>Description</th>
+                <th>Winner</th>
+                <th>Organizer</th>
+            </tr>
+            {% for event in events %}
+            <tr class="eventRow">
+                <td><a href="/handle_participant/{{ event.event_id }}">{{ event.event_name }}</a></td>
+                <td>{{ event.event_date }}</td>
+                <td>{{ event.event_time }}</td>
+                <td>{{ event.event_venue }}</td>
+                <td>{{ event.event_description }}</td>
+                <td>{{ event.event_winner }}</td>
+                <td>{{ event.event_organizer }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    
+    <div class="button-container">
+        <button onclick="logout()">Logout</button>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            var rows = document.querySelectorAll('.eventRow');
+            rows.forEach(function(row) {
+                var eventName = row.cells[0].textContent.toLowerCase();
+                if (eventName.includes(searchTerm)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        function logout() {
+            window.location.href = '/logout';
+        }
+    </script>
+
+</body>
+</html>
